@@ -17,4 +17,5 @@ now how can we add in headers section we can add  header name `X-CSRF-TOKEN ` an
 
 
 ### 💻 Next Method we can do one thing for this session id .. we can say the session id does not allowd to access another sites..
+    For that we can say SAME SITE STRICT - Do not allow to any other site for our session id
 we can do this thing also for securty.
