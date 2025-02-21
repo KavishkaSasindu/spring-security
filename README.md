@@ -34,3 +34,25 @@ For this we can enabled the configuration jav class and ..create like below code
     }
 
    ```
+
+-:accessibility: Now Disabling CSRF (but use basic auth)
+
+  ```
+    @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http.csrf(customizer -> customizer.disable());
+        http.authorizeHttpRequests(request->request.anyRequest().authenticated());
+        http.httpBasic(Customizer.withDefaults());
+        http.sessionManagement(session->session.
+                sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+        return http.build();
+        }
+    }
+  ```
+
