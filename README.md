@@ -19,3 +19,18 @@ now how can we add in headers section we can add  header name `X-CSRF-TOKEN ` an
 ### 💻 Next Method we can do one thing for this session id .. we can say the session id does not allowd to access another sites..
     For that we can say SAME SITE STRICT - Do not allow to any other site for our session id
 we can do this thing also for securty.
+
+For this we can enabled the configuration jav class and ..create like below code snippet..
+ - this is only first configuration.Creating a java class and make simple configuration
+   ```
+   @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig {
+
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+            return http.build();
+        }
+    }
+
+   ```
