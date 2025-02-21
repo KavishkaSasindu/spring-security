@@ -3,12 +3,14 @@ package com.example.SpringSecurity.controller;
 
 import com.example.SpringSecurity.model.StudentModel;
 import com.example.SpringSecurity.service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,13 @@ public class StudentController {
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+//    for csrf token
+    @GetMapping("/token")
+    public CsrfToken getCsrfToken(HttpServletRequest request) {
+       return (CsrfToken) request.getAttribute("_csrf");
+
     }
 
     @PostMapping("/create")
